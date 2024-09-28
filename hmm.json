@@ -2,8 +2,10 @@
   "dependencies": [
     {
       "name": "lime",
-      "type": "haxelib",
-      "version": null
+			"type": "git",
+			"dir": null,
+			"ref": "develop",
+			"url": "https://github.com/mcagabe19-stuff/lime"
     },
     {
       "name": "openfl",
@@ -32,13 +34,17 @@
     },
     {
       "name": "hxcpp",
-      "type": "haxelib",
-      "version": null
+			"type": "git",
+			"dir": null,
+			"ref": "8dd30d69399f616f4e85295ce3f828219b78af17",
+			"url": "https://github.com/mcagabe19-stuff/hxcpp"
     },
     {
       "name": "hxvlc",
-      "type": "haxelib",
-      "version": null
+			"type": "git",
+			"dir": null,
+			"ref": "70e7f5f3e76d526ac6fb8f0e6665efe7dfda589d",
+			"url": "https://github.com/MAJigsaw77/hxvlc"
     },
     {
       "name": "SScript",
@@ -73,8 +79,15 @@
       "name": "linc_luajit",
       "type": "git",
       "dir": null,
-      "ref": "master",
-      "url": "https://github.com/superpowers04/linc_luajit"
+      "ref": "main",
+      "url": "https://github.com/mcagabe19-stuff/linc_luajit-rewriten.git"
+    },
+    {
+			"name": "extension-androidtools",
+			"type": "git",
+			"dir": null,
+			"ref": "df9dfd0cda74e5460ae3afcfff1081c50959ed4a",
+			"url": "https://github.com/MAJigsaw77/extension-androidtools"
     }
   ]
 }
