@@ -9,6 +9,7 @@ import states.TitleState;
 // Add a variable here and it will get automatically saved
 @:structInit class SaveVariables {
 	public var screensaver:Bool = false;
+	public var wideScreen:Bool = false;
 	#if android
 	public var storageType:String = "EXTERNAL_DATA";
 	#end
