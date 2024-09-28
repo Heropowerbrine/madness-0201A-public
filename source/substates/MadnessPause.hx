@@ -158,6 +158,10 @@ class MadnessPause extends MusicBeatSubstate
 
 
 
+		#if mobile
+		addVirtualPad(UP_DOWN,A);
+		addVPadCam();
+		#end
 		super.create();
 
 		changeSel();
@@ -192,9 +196,9 @@ class MadnessPause extends MusicBeatSubstate
 		gridShader.update(elapsed);
 		super.update(elapsed);
 
-		if (controls.UI_DOWN_P || controls.UI_UP_P)
-			changeSel(controls.UI_DOWN_P ? 1 : -1);
-		if (controls.ACCEPT)
+		if (controls.UI_DOWN_P || controls.UI_UP_P #if mobile || _virtualpad.buttonDown.justPressed || _virtualpad.buttonUp.justPressed #end)
+			changeSel(controls.UI_DOWN_P #if mobile || _virtualpad.buttonDown.justPressed #end ? 1 : -1);
+		if (controls.ACCEPT #if mobile || _virtualpad.buttonA.justPressed #end)
 			confirmSel();
 	}
 
