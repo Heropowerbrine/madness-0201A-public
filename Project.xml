@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="MADNESS INCIDENT 0201A" file="MADNESS" packageName="com.shadowmario.psychengine" package="com.shadowmario.psychengine" main="Main" version="0.2.8" company="dataLand" />
+	<app title="MADNESS INCIDENT 0201A" file="MADNESS" packageName="com.shadowmario.madness" package="com.shadowmario.madness" main="Main" version="0.2.8" company="dataLand" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
