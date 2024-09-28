@@ -158,8 +158,8 @@ class SUtil
 enum abstract StorageType(String) from String to String
 {
 	final forcedPath = '/storage/emulated/0/';
-	final packageNameLocal = 'com.shadowmario.psychengineek';
-	final fileLocal = 'PsychEngineExtraKeys';
+	final packageNameLocal = 'com.shadowmario.madness';
+	final fileLocal = 'MADNESS';
 
 	var EXTERNAL_DATA = "EXTERNAL_DATA";
 	var EXTERNAL_OBB = "EXTERNAL_OBB";
