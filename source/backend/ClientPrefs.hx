@@ -10,6 +10,8 @@ import states.TitleState;
 @:structInit class SaveVariables {
 	public var screensaver:Bool = false;
 	public var wideScreen:Bool = false;
+	public var controlsAlpha:Float = 0.7;
+	public var hideHitboxHints:Bool = false;
 	#if android
 	public var storageType:String = "EXTERNAL_DATA";
 	#end
