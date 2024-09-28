@@ -1741,7 +1741,7 @@ class PlayState extends MusicBeatState
 			botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
 		}
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnScripts('onPause', null, true);
 			if(ret != LuaUtils.Function_Stop) {
@@ -2923,6 +2923,11 @@ class PlayState extends MusicBeatState
 		var holdArray:Array<Bool> = [];
 		var pressArray:Array<Bool> = [];
 		var releaseArray:Array<Bool> = [];
+
+		#if mobile
+		var hitboxHold:Array<Bool> = [];
+		#end
+		
 		for (key in keysArray)
 		{
 			holdArray.push(controls.pressed(key));
@@ -2933,11 +2938,26 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		#if mobile
+		for (i in 0..._hitbox.array.length) {
+			hitboxHold.push(_hitbox.array[i].pressed);
+		}
+		#end
+
 		// TO DO: Find a better way to handle controller inputs, this should work for now
 		if(controls.controllerMode && pressArray.contains(true))
 			for (i in 0...pressArray.length)
 				if(pressArray[i] && strumsBlocked[i] != true)
 					keyPressed(i);
+
+		#if mobile
+		    for (i in 0..._hitbox.array.length) {
+			if (_hitbox.array[i].justPressed && strumsBlocked[i] != true)
+			{
+				 keyPressed(i);
+			}
+		}
+		#end
 
 		if (startedCountdown && !inCutscene && !boyfriend.stunned && generatedMusic)
 		{
@@ -2954,6 +2974,13 @@ class PlayState extends MusicBeatState
 
 						if (!released)
 							goodNoteHit(n);
+						
+						#if mobile
+						var poop:Bool = !hitboxHold[n.noteData];
+
+						if (!poop)
+						    goodNoteHit(n);
+						#end
 					}
 				}
 			}
@@ -2971,6 +2998,14 @@ class PlayState extends MusicBeatState
 			for (i in 0...releaseArray.length)
 				if(releaseArray[i] || strumsBlocked[i] == true)
 					keyReleased(i);
+		#if mobile
+		for (i in 0..._hitbox.array.length) {
+			if (_hitbox.array[i].justReleased || strumsBlocked[i] == true)
+			{
+				keyReleased(i);
+			}
+		}
+		#end
 	}
 
 	function noteMiss(daNote:Note):Void { //You didn't hit the key and let it go offscreen, also used by Hurt Notes
