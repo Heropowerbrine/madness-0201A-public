@@ -47,14 +47,14 @@ class FlxHitbox extends FlxSpriteGroup {
 		button.updateHitbox();
 		button.alpha = 0.00001;
 
-		if (!ClientPrefs.hideHitboxHints)
+		if (!ClientPrefs.data.hideHitboxHints)
 		{
 			button.onDown.callback = function()
 			{
 				if (hintTween != null)
 					hintTween.cancel();
 
-				hintTween = FlxTween.tween(button, {alpha: ClientPrefs.controlsAlpha}, ClientPrefs.controlsAlpha / 100, {
+				hintTween = FlxTween.tween(button, {alpha: ClientPrefs.data.controlsAlpha}, ClientPrefs.data.controlsAlpha / 100, {
 					ease: FlxEase.circInOut,
 					onComplete: function(twn:FlxTween)
 					{
@@ -67,7 +67,7 @@ class FlxHitbox extends FlxSpriteGroup {
 				if (hintTween != null)
 					hintTween.cancel();
 
-				hintTween = FlxTween.tween(button, {alpha: 0.00001}, ClientPrefs.controlsAlpha / 10, {
+				hintTween = FlxTween.tween(button, {alpha: 0.00001}, ClientPrefs.data.controlsAlpha / 10, {
 					ease: FlxEase.circInOut,
 					onComplete: function(twn:FlxTween)
 					{
@@ -80,7 +80,7 @@ class FlxHitbox extends FlxSpriteGroup {
 				if (hintTween != null)
 					hintTween.cancel();
 
-				hintTween = FlxTween.tween(button, {alpha: 0.00001}, ClientPrefs.controlsAlpha / 10, {
+				hintTween = FlxTween.tween(button, {alpha: 0.00001}, ClientPrefs.data.controlsAlpha / 10, {
 					ease: FlxEase.circInOut,
 					onComplete: function(twn:FlxTween)
 					{
@@ -104,9 +104,9 @@ class FlxHitbox extends FlxSpriteGroup {
 	}
 	function createHintGraphic(Width:Int, Height:Int):BitmapData
 	{
-		var guh = ClientPrefs.controlsAlpha;
+		var guh = ClientPrefs.data.controlsAlpha;
 		if (guh >= 0.9)
-			guh = ClientPrefs.controlsAlpha - 0.07;
+			guh = ClientPrefs.data.controlsAlpha - 0.07;
 		var shape:Shape = new Shape();
 		shape.graphics.beginFill(0xFFFFFF);
 		shape.graphics.lineStyle(3, 0xFFFFFF, 1);
