@@ -177,7 +177,7 @@ class CopyState extends MusicBeatState
 		locatedFiles = OpenFLAssets.list();
 		
 		// removes unwanted assets
-		var assets = locatedFiles.filter(folder -> folder.startsWith('assets/'));
+		locatedFiles = locatedFiles.filter(folder -> folder.startsWith('assets/'));
 		//var mods = locatedFiles.filter(folder -> folder.startsWith('mods/'));
 		//locatedFiles = assets.concat(mods);
 
