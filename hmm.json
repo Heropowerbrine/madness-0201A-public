@@ -48,8 +48,10 @@
     },
     {
       "name": "SScript",
-      "type": "haxelib",
-      "version": "8.1.6"
+      "type": "git",
+      "dir": null,
+      "ref": "main",
+      "url": "https://github.com/FunkinExtraKeys/SScript.git"
     },
     {
       "name": "hxcpp-debug-server",
