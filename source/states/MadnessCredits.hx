@@ -122,6 +122,9 @@ class MadnessCredits extends MusicBeatState
         displayedQuote.color = FlxColor.RED;
         
 
+        #if mobile
+        addVirtualPad(UP_DOWN,A_B);
+        #end
         changeSel();
 
 
@@ -136,18 +139,18 @@ class MadnessCredits extends MusicBeatState
     override function update(elapsed:Float) {
         super.update(elapsed);
 
-        if (controls.UI_DOWN_P || controls.UI_UP_P || FlxG.mouse.wheel != 0) 
+        if (controls.UI_DOWN_P #if mobile || _virtualpad.buttonDown.justPressed #end || controls.UI_UP_P #if mobile || _virtualpad.buttonUp.justPressed #end || FlxG.mouse.wheel != 0) 
         {
             holdTime = 0;
-            changeSel(FlxG.mouse.wheel == 0 ? controls.UI_DOWN_P ? 1 : -1 : -FlxG.mouse.wheel);
+            changeSel(FlxG.mouse.wheel == 0 ? controls.UI_DOWN_P #if mobile || _virtualpad.buttonDown.justPressed #end ? 1 : -1 : -FlxG.mouse.wheel);
         }
 
-        if (controls.BACK) MusicBeatState.switchState(new MadnessMenu());
+        if (controls.BACK #if mobile || _virtualpad.buttonB.justPressed #end) MusicBeatState.switchState(new MadnessMenu());
 
-        if (controls.ACCEPT || FlxG.mouse.justPressed) CoolUtil.browserLoad(credits[curSel].link);
+        if (controls.ACCEPT #if mobile || _virtualpad.buttonA.justPressed #end) CoolUtil.browserLoad(credits[curSel].link);
 
 
-        if(controls.UI_DOWN || controls.UI_UP)
+        if(controls.UI_DOWN || controls.UI_UP #if mobile || _virtualpad.buttonDown.pressed || _virtualpad.buttonUp.pressed #end)
         {
             var checkLastHold:Int = Math.floor((holdTime - 0.5) * 10);
             holdTime += elapsed;
