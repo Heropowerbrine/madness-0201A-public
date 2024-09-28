@@ -28,7 +28,7 @@ jobs:
 
       - name: Download SScript
         run: |
-          wget https://github.com/CobaltBar/SScript-Archive/tree/main/archives -O SScript-8,1,6.zip
+          wget https://github.com/CobaltBar/SScript-Archive/blob/main/archives/SScript-8%2C1%2C6.zip -O SScript-8,1,6.zip
           unzip SScript-8,1,6.zip -d ./source_directory/
 
       - name: Install SScript via Haxelib
