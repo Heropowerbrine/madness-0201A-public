@@ -16,6 +16,41 @@ class MusicBeatState extends FlxUIState
 	private var curDecStep:Float = 0;
 	private var curDecBeat:Float = 0;
 	public var controls(get, never):Controls;
+
+	#if android
+	var _hitbox:FlxHitbox;
+	var _virtualpad:FlxVirtualPad;
+
+	public function addHitbox(?keyCount:Int = 3) {
+		_hitbox = new FlxHitbox(keyCount);
+
+		var camMobile = new FlxCamera();
+	    camMobile.bgColor.alpha = 0;
+		FlxG.cameras.add(camMobile, false);
+
+		_hitbox.cameras = [camMobile];
+ 		add(_hitbox);
+	}
+
+	public function addVirtualPad(?dpad:FlxDPadMode, ?action:FlxActionMode) {
+		_virtualpad = new FlxVirtualPad(dpad, action);
+		_virtualpad.alpha = ClientPrefs.data.controlsAlpha;
+		add(_virtualpad);
+	}
+
+	public function removeVirtualPad() {
+		remove(_virtualpad);
+	}
+
+	public function addVPadCam() {
+		var camMobile = new FlxCamera();
+		camMobile.bgColor.alpha = 0;
+		FlxG.cameras.add(camMobile, false);
+
+		_virtualpad.cameras = [camMobile];
+	}
+	#end
+	
 	private function get_controls()
 	{
 		return Controls.instance;
