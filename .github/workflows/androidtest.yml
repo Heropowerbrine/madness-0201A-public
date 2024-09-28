@@ -1,6 +1,8 @@
 name: Android Build Test
+
 on:
   workflow_dispatch:
+
 jobs:
   Android:
     runs-on: ubuntu-latest
@@ -23,6 +25,15 @@ jobs:
         run: |
           haxelib install hmm --quiet
           haxelib run hmm install --quiet
+
+      - name: Download SScript
+        run: |
+          wget https://github.com/CobaltBar/SScript-Archive/tree/main/archives -O SScript-8,1,6.zip
+          unzip SScript-8,1,6.zip -d ./source_directory/
+
+      - name: Install SScript via Haxelib
+        run: |
+          haxelib install ./source_directory/SScript-8,1,6.zip
 
       - name: Configure Android
         run: |
