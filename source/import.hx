@@ -50,6 +50,9 @@ import flxanimate.*;
 #end
 
 //Mobile Controls
+import mobile.flixel.FlxHitbox;
+import mobile.flixel.FlxVirtualPad;
+import mobile.flixel.input.FlxMobileInputID;
 import mobile.backend.SUtil;
 import mobile.backend.MobileScaleMode;
 
