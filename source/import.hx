@@ -51,6 +51,7 @@ import flxanimate.*;
 
 //Mobile Controls
 import mobile.backend.SUtil;
+import mobile.backend.MobileScaleMode;
 
 //Android
 #if android
