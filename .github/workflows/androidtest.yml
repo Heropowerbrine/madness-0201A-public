@@ -33,7 +33,7 @@ jobs:
 
       - name: Install SScript via Haxelib
         run: |
-          haxelib local ./source_directory/
+          haxelib dev SScript ./source_directory/
 
       - name: Configure Android
         run: |
