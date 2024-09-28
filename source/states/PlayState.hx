@@ -620,6 +620,9 @@ class PlayState extends MusicBeatState
 		noteGroup.cameras = [camHUD];
 		comboGroup.cameras = [camHUD];
 
+		addHitbox(3);
+		_hitbox.visible = false;
+
 		startingSong = true;
 
 		#if LUA_ALLOWED
@@ -979,6 +982,9 @@ class PlayState extends MusicBeatState
 
 	public function startCountdown()
 	{
+		#if mobile
+		_hitbox.visible = true;
+		#end
 		if(startedCountdown) {
 			callOnScripts('onStartCountdown');
 			return false;
@@ -2499,6 +2505,10 @@ class PlayState extends MusicBeatState
 		camZooming = false;
 		inCutscene = false;
 		updateTime = false;
+
+		#if mobile
+		_hitbox.visible = false;
+		#end
 
 		deathCounter = 0;
 		seenCutscene = false;
