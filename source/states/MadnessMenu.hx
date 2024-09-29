@@ -296,7 +296,7 @@ class MadnessMenu extends MusicBeatState
         }
 
 
-        if ((controls.BACK || FlxG.mouse.justPressedRight) && storyDropDown.open)
+        if ((controls.BACK #if android || FlxG.android.justReleased.BACK #end || FlxG.mouse.justPressedRight) && storyDropDown.open)
         {
             closeStoryDropdown();
 
